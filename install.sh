@@ -5,7 +5,10 @@ pushd .
 if [ ! -d "~/$PROJECT_DIR_NAME" ]; then
     cd
     
-    sudo apt-get update && sudo apt-get install tree tldr -y
+    echo "Cloning model-bouncer repo...."
+    git clone https://github.com/Cytoreason/e2-nextflow.git
+    cd $PROJECT_DIR_NAME
+    git pull 
 
     echo "Installing nextflow with conda"
     conda install nextflow -c bioconda
