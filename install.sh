@@ -40,11 +40,9 @@ EOF
     git clone https://github.com/Cytoreason/nf-cytocc.git
     cd nf-cytocc
     git pull
-    sudo apt update && sudo apt-get install -y openjdk-17-jdk
-    echo "Building nf-cytocc"
-    make assemble 
+    sudo apt update && sudo apt-get install -y openjdk-21-jdk
     echo "Installing nf-cytocc"
-    make install
+    make assemble && make install
 fi
 export TOWER_ACCESS_TOKEN=`gcloud secrets versions access latest --secret=TOWER_ACCESS_TOKEN`
 popd
