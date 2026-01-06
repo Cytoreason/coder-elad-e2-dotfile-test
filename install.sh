@@ -39,8 +39,9 @@ EOF
     echo "Cloning nf-cytocc repo...."
     git clone https://github.com/Cytoreason/nf-cytocc.git
     cd nf-cytocc
-    apt update && sudo apt-get install -y openjdk-17-jdk 
-    make assemble && make install
+    git pull
+    #apt update && sudo apt-get install -y openjdk-17-jdk 
+    #make assemble && make install
 fi
 export TOWER_ACCESS_TOKEN=`gcloud secrets versions access latest --secret=TOWER_ACCESS_TOKEN`
 popd
