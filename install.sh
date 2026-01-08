@@ -34,15 +34,20 @@ if [ ! -d "~/$PROJECT_DIR_NAME" ]; then
 EOF
 
     fi
-    whoami
+fi
+export TOWER_ACCESS_TOKEN=`gcloud secrets versions access latest --secret=TOWER_ACCESS_TOKEN`
+popd
+
+NF_CYTOCC_DIR_NAME=nf-cytocc
+pushd .
+if [ -d "~/$NF_CYTOCC_DIR_NAME" ]; then
     cd
     echo "Cloning nf-cytocc repo...."
     git clone https://github.com/Cytoreason/nf-cytocc.git
-    cd nf-cytocc
-    git pull
-    sudo apt update && sudo apt-get install -y openjdk-21-jdk
-    echo "Installing nf-cytocc"
-    make assemble && make install
 fi
-export TOWER_ACCESS_TOKEN=`gcloud secrets versions access latest --secret=TOWER_ACCESS_TOKEN`
+cd nf-cytocc
+git pull
+sudo apt update && sudo apt-get install -y openjdk-21-jdk
+echo "Installing nf-cytocc"
+make assemble && make install
 popd
