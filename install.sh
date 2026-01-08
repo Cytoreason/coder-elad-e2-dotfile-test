@@ -40,7 +40,7 @@ popd
 
 NF_CYTOCC_DIR_NAME=nf-cytocc
 pushd .
-if [ -d "~/$NF_CYTOCC_DIR_NAME" ]; then
+if [ ! -d "~/$NF_CYTOCC_DIR_NAME" ]; then
     cd
     echo "Cloning nf-cytocc repo...."
     git clone https://github.com/Cytoreason/nf-cytocc.git
